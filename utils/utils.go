@@ -1,11 +1,11 @@
 package utils
 
 import (
-	"net/http"
-	"github.com/Arthelon/n10n/models"
-	"github.com/gorilla/context"
 	"errors"
+	"github.com/Arthelon/n10n/models"
 	"github.com/dgrijalva/jwt-go"
+	"github.com/gorilla/context"
+	"net/http"
 )
 
 func GetCurrentUser(r *http.Request) (*models.User, error) {
@@ -31,4 +31,3 @@ func CreateToken(id int64) (string, error) {
 	token := jwt.NewWithClaims(jwt.SigningMethodHS256, claims)
 	return token.SignedString([]byte(models.Conf.SigningKey))
 }
-

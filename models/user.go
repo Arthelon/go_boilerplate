@@ -3,7 +3,7 @@ package models
 import "golang.org/x/crypto/bcrypt"
 
 type User struct {
-	Id       int64 `json:"id"`
+	Id       int64  `json:"id"`
 	FullName string `json:"fullName"`
 	Username string `json:"username"`
 	Password string `json:"password"`
@@ -24,7 +24,6 @@ func (u *User) VerifyPassword(password string) error {
 	err := bcrypt.CompareHashAndPassword([]byte(u.Password), []byte(password))
 	return err
 }
-
 
 func GetUserByUsername(username string) (*User, error) {
 	user := User{}

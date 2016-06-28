@@ -1,11 +1,11 @@
 package main
 
 import (
+	"fmt"
+	"github.com/Arthelon/n10n/controllers"
 	"github.com/Arthelon/n10n/models"
 	"log"
-	"fmt"
 	"net/http"
-	"github.com/Arthelon/n10n/controllers"
 )
 
 func main() {

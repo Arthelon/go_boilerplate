@@ -1,14 +1,13 @@
 package controllers
 
 import (
-	"net/http"
-	"fmt"
 	"encoding/json"
-	"github.com/Arthelon/n10n/models"
+	"fmt"
 	"github.com/Arthelon/n10n/controllers/api"
+	"github.com/Arthelon/n10n/models"
 	"github.com/Arthelon/n10n/utils"
+	"net/http"
 )
-
 
 func AUTH_Post_Register(w http.ResponseWriter, r *http.Request) {
 	decoder := json.NewDecoder(r.Body)

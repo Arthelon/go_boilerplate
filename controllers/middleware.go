@@ -1,12 +1,12 @@
 package controllers
 
 import (
-	"net/http"
+	"fmt"
+	"github.com/Arthelon/n10n/controllers/api"
+	"github.com/Arthelon/n10n/models"
 	"github.com/Arthelon/n10n/utils"
 	"github.com/dgrijalva/jwt-go"
-	"github.com/Arthelon/n10n/models"
-	"github.com/Arthelon/n10n/controllers/api"
-	"fmt"
+	"net/http"
 )
 
 func RequireUserToken(handler http.Handler) http.HandlerFunc {
@@ -15,14 +15,14 @@ func RequireUserToken(handler http.Handler) http.HandlerFunc {
 		token, err := jwt.ParseWithClaims(tokenStr, &models.UserClaims{}, func(token *jwt.Token) (interface{}, error) {
 			return []byte(models.Conf.SigningKey), nil
 		})
-		if err != nil  {
+		if err != nil {
 			fmt.Printf("Error occured while parsing user token: %v\n", err)
 			failResp := models.Response{Success: false, Message: "Invalid user token"}
 			api.JSONResponse(w, failResp, 400)
 			return
 		}
 		claims, ok := token.Claims.(*models.UserClaims)
-		if !ok  {
+		if !ok {
 			failResp := models.Response{Success: false, Message: "Invalid user token"}
 			api.JSONResponse(w, failResp, 400)
 			return

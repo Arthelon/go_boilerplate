@@ -1,14 +1,14 @@
 package api
 
 import (
-	"net/http"
-	"fmt"
 	"encoding/json"
+	"fmt"
 	"github.com/Arthelon/n10n/models"
+	"net/http"
 )
 
 func API_Verify(w http.ResponseWriter, r *http.Request) {
-	JSONResponse(w, models.Response{Success:true, Message: "Server is healthy"}, 200)
+	JSONResponse(w, models.Response{Success: true, Message: "Server is healthy"}, 200)
 }
 
 func JSONResponse(w http.ResponseWriter, d interface{}, c int) {
